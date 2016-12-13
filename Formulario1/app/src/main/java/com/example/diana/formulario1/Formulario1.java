@@ -1,7 +1,7 @@
 package com.example.diana.formulario1;
 
 /**
- * Created by BIBLIO_REP on 12/12/2016.
+ * Entidad formulario
  */
 
 public class Formulario1 {
@@ -10,9 +10,9 @@ public class Formulario1 {
     private String colorfav;
     private String animalfav;
     private String cancionfav;
-    private int   edad ;
+    private String   edad ;
 
-    public Formulario1(String id, String nombre, String colorfav, String animalfav, String cancionfav, int edad){
+    public Formulario1(String id, String nombre, String colorfav, String animalfav, String cancionfav, String edad){
 
         this.id = id;
         this.nombre = nombre;
@@ -45,7 +45,7 @@ public class Formulario1 {
 
          return  cancionfav;
      }
-    public int getEdad(){
+    public String getEdad(){
 
         return edad;
     }
