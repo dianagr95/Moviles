@@ -53,7 +53,7 @@ public class FormularioDbHelper extends SQLiteOpenHelper {
         return db.insert(
                 FormularioEntry.TABLE_NAME,
                 null,
-                lawyer.toContentValues());
+                f.toContentValues());
     }
 
     @Override
@@ -67,7 +67,7 @@ public class FormularioDbHelper extends SQLiteOpenHelper {
         return sqLiteDatabase.insert(
                 FormularioEntry.TABLE_NAME,
                 null,
-                lawyer.toContentValues());
+                f.toContentValues());
 
     }
 
@@ -83,31 +83,31 @@ public class FormularioDbHelper extends SQLiteOpenHelper {
                         null);
     }
 
-    public Cursor getFormularioById(String lawyerId) {
+    public Cursor getFormularioById(String fId) {
         Cursor c = getReadableDatabase().query(
                 FormularioEntry.TABLE_NAME,
                 null,
                 FormularioEntry.ID + " LIKE ?",
-                new String[]{lawyerId},
+                new String[]{fId},
                 null,
                 null,
                 null);
         return c;
     }
 
-    public int deleteFormulario(String lawyerId) {
+    public int deleteFormulario(String fId) {
         return getWritableDatabase().delete(
                 FormularioEntry.TABLE_NAME,
                 FormularioEntry.ID + " LIKE ?",
-                new String[]{lawyerId});
+                new String[]{fId});
     }
 
-    public int updateFormulario(Formulario1 lawyer, String lawyerId) {
+    public int updateFormulario(Formulario1 f, String fId) {
         return getWritableDatabase().update(
                 FormularioEntry.TABLE_NAME,
-                lawyer.toContentValues(),
+                f.toContentValues(),
                 FormularioEntry.ID + " LIKE ?",
-                new String[]{lawyerId}
+                new String[]{fId}
         );
     }
 

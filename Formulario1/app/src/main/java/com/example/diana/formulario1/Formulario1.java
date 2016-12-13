@@ -1,5 +1,8 @@
 package com.example.diana.formulario1;
 
+import android.content.ContentValues;
+
+import com.example.diana.formulario1.EsquemaFormulario.FormularioEntry;
 /**
  * Entidad formulario
  */
@@ -22,6 +25,17 @@ public class Formulario1 {
         this.edad = edad;
 
 
+    }
+
+    public ContentValues toContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(FormularioEntry.ID, id);
+        values.put(FormularioEntry.NAME, nombre);
+        values.put(FormularioEntry.CANCIONFAV, cancionfav);
+        values.put(FormularioEntry.COLOFAV, colorfav);
+        values.put(FormularioEntry.EDAD, edad);
+        values.put(FormularioEntry.ANIMALFAV, animalfav);
+        return values;
     }
 
     public String getId(){
