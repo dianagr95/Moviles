@@ -15,33 +15,34 @@ import android.app.Activity;
         import android.widget.ListView;
         import android.widget.Toast;
 
-       /* import com.example.diana.formulario1.MainActivity.*R;
-        import com.example.diana.formulario1.lawyersapp.addeditlawyer.AddEditLawyerActivity;
-        import com.herprogramacion.lawyersapp.data.LawyersDbHelper;
-        import com.herprogramacion.lawyersapp.lawyerdetail.LawyerDetailActivity;
+        import com.example.diana.formulario1.R;
+        import com.example.diana.formulario1.AddEditLawyerActivity;
+        import com.example.diana.formulario1.FormularioDbHelper;
+        import com.example.diana.formulario1.LawyerDetailActivity;
+        import com.example.diana.formulario1.Formulario1Activity;
 
-        import static com.herprogramacion.lawyersapp.data.LawyersContract.LawyerEntry;*/
+        import static com.example.diana.formulario1.EsquemaFormulario.FormularioEntry;
 
 
 /**
  * Vista para la lista de abogados del gabinete
  */
-public class LawyersFragment extends Fragment {
+public class Formulario1Fragment extends Fragment {
     public static final int REQUEST_UPDATE_DELETE_FORMULARIO = 2;
 
     private FormularioDbHelper FormularioDbHelper;
 
     private ListView mFormularioList;
-    private LawyersCursorAdapter mLawyersAdapter;
+    private FormularioCursorAdapter mFormuarioAdapter;
     private FloatingActionButton mAddButton;
 
 
-    public LawyersFragment() {
+    public Formulario1Fragment() {
         // Required empty public constructor
     }
 
-    public static LawyersFragment newInstance() {
-        return new LawyersFragment();
+    public static Formulario1Fragment newInstance() {
+        return new Formulario1Fragment();
     }
 
     @Override
@@ -51,17 +52,17 @@ public class LawyersFragment extends Fragment {
 
         // Referencias UI
         mFormularioList = (ListView) root.findViewById(R.id.formulario_list);
-        mLawyersAdapter = new LawyersCursorAdapter(getActivity(), null);
+        mFormuarioAdapter = new FormularioCursorAdapter(getActivity(), null);
         mAddButton = (FloatingActionButton) getActivity().findViewById(R.id.fab);
 
         // Setup
-        mFormularioList.setAdapter(mLawyersAdapter);
+        mFormularioList.setAdapter(mFormuarioAdapter);
 
         // Eventos
         mFormularioList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Cursor currentItem = (Cursor) mLawyersAdapter.getItem(i);
+                Cursor currentItem = (Cursor) mFormuarioAdapter.getItem(i);
                 String currentLawyerId = currentItem.getString(
                         currentItem.getColumnIndex(EsquemaFormulario.FormularioEntry.ID));
 
@@ -118,7 +119,7 @@ public class LawyersFragment extends Fragment {
 
     private void showDetailScreen(String lawyerId) {
         Intent intent = new Intent(getActivity(), LawyerDetailActivity.class);
-        intent.putExtra(Formulario1Activity.EXTRA_FORMULARIO_ID, lawyerId);
+        intent.putExtra(Formulario1Activity.EXTRA_FORMULARIO_ID, formularioId);
         startActivityForResult(intent, REQUEST_UPDATE_DELETE_FORMULARIO);
     }
 
