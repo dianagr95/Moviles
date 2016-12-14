@@ -110,7 +110,7 @@ public class FormularioDetailFragment extends Fragment {
     }
 
     private void showFormulario(Formulario1 f) {
-        mCollapsingView.setTitle(f.getNombre());
+        mCollapsingView.setTitle(f.getName());
         /*Glide.with(this)
                 .load(Uri.parse("file:///android_asset/" + lawyer.getAvatarUri()))
                 .centerCrop()
@@ -121,7 +121,7 @@ public class FormularioDetailFragment extends Fragment {
     }
 
     private void showEditScreen() {
-        Intent intent = new Intent(getActivity(), AddEditLawyerActivity.class);
+        Intent intent = new Intent(getActivity(), AddEditFormularioActivity.class);
         intent.putExtra(Formulario1Activity.EXTRA_FORMULARIO_ID, mFormularioId);
         startActivityForResult(intent, Formulario1Fragment.REQUEST_UPDATE_DELETE_FORMULARIO);
     }
@@ -171,7 +171,7 @@ public class FormularioDetailFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Integer integer) {
-            showLawyersScreen(integer > 0);
+            showFormularioScreen(integer > 0);
         }
 
     }
