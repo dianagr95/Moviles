@@ -18,7 +18,7 @@ import android.app.Activity;
         import com.example.diana.formulario1.R;
         import com.example.diana.formulario1.AddEditLawyerActivity;
         import com.example.diana.formulario1.FormularioDbHelper;
-        import com.example.diana.formulario1.LawyerDetailActivity;
+        import com.example.diana.formulario1.FormularioDetailActivity;
         import com.example.diana.formulario1.Formulario1Activity;
 
         import static com.example.diana.formulario1.EsquemaFormulario.FormularioEntry;
@@ -30,7 +30,7 @@ import android.app.Activity;
 public class Formulario1Fragment extends Fragment {
     public static final int REQUEST_UPDATE_DELETE_FORMULARIO = 2;
 
-    private FormularioDbHelper FormularioDbHelper;
+    private FormularioDbHelper mFormulario1DbHelper;
 
     private ListView mFormularioList;
     private FormularioCursorAdapter mFormuarioAdapter;
@@ -80,7 +80,7 @@ public class Formulario1Fragment extends Fragment {
         getActivity().deleteDatabase(com.example.diana.formulario1.FormularioDbHelper.DATABASE_NAME);
 
         // Instancia de helper
-        mFormularioDbHelper = new FormularioDbHelper(getActivity());
+        mFormulario1DbHelper = new FormularioDbHelper(getActivity());
 
         // Carga de datos
         loadLawyers();
@@ -104,7 +104,7 @@ public class Formulario1Fragment extends Fragment {
     }
 
     private void loadLawyers() {
-        new LawyersLoadTask().execute();
+        new FormularioLoadTask().execute();
     }
 
     private void showSuccessfullSavedMessage() {
@@ -117,23 +117,23 @@ public class Formulario1Fragment extends Fragment {
         startActivityForResult(intent, AddEditLawyerActivity.REQUEST_ADD_LAWYER);
     }
 
-    private void showDetailScreen(String lawyerId) {
-        Intent intent = new Intent(getActivity(), LawyerDetailActivity.class);
+    private void showDetailScreen(String formularioId) {
+        Intent intent = new Intent(getActivity(), FormularioDetailActivity.class);
         intent.putExtra(Formulario1Activity.EXTRA_FORMULARIO_ID, formularioId);
         startActivityForResult(intent, REQUEST_UPDATE_DELETE_FORMULARIO);
     }
 
-    private class LawyersLoadTask extends AsyncTask<Void, Void, Cursor> {
+    private class FormularioLoadTask extends AsyncTask<Void, Void, Cursor> {
 
         @Override
         protected Cursor doInBackground(Void... voids) {
-            return mFormularioDbHelper.getAllLawyers();
+            return mFormulario1DbHelper.getAllLawyers();
         }
 
         @Override
         protected void onPostExecute(Cursor cursor) {
             if (cursor != null && cursor.getCount() > 0) {
-                mLawyersAdapter.swapCursor(cursor);
+                mFormuarioAdapter.swapCursor(cursor);
             } else {
                 // Mostrar empty state
             }

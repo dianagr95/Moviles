@@ -8,7 +8,7 @@ import android.view.Menu;
 import com.example.diana.formulario1.R;
 import com.example.diana.formulario1.Formulario1Activity;
 
-public class LawyerDetailActivity extends AppCompatActivity {
+public class FormularioDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
