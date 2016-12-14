@@ -18,8 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.diana.formulario1.R;
-import com.example.diana.formulario1.AddEditLawyerActivity;
+import com.example.diana.formulario1.*;
+import com.example.diana.formulario1.AddEditFormularioActivity;
 import com.example.diana.formulario1.Formulario1;
 import com.example.diana.formulario1.FormularioDbHelper;
 import com.example.diana.formulario1.Formulario1Activity;

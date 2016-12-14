@@ -16,7 +16,7 @@ import android.app.Activity;
         import android.widget.Toast;
 
         import com.example.diana.formulario1.R;
-        import com.example.diana.formulario1.AddEditLawyerActivity;
+        import com.example.diana.formulario1.AddEditFormularioActivity;
         import com.example.diana.formulario1.FormularioDbHelper;
         import com.example.diana.formulario1.FormularioDetailActivity;
         import com.example.diana.formulario1.Formulario1Activity;

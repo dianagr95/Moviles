@@ -28,6 +28,10 @@
         <activity
             android:name=".FormularioDetailActivity"
             android:label="@string/title_activity_formulario_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddEditFormularioActivity"
+            android:label="@string/title_activity_add_edit_formulario"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
