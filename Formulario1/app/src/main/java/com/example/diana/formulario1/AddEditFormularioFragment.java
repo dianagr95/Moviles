@@ -94,34 +94,34 @@ public class AddEditFormularioFragment extends Fragment {
     }
 
     private void loadLawyer() {
-        new GetLawyerByIdTask().execute();
+        new GetFormularioByIdTask().execute();
     }
 
     private void addEditLawyer() {
         boolean error = false;
 
         String name = mNameField.getText().toString();
-        String phoneNumber = mPhoneNumberField.getText().toString();
-        String specialty = mSpecialtyField.getText().toString();
-        String bio = mBioField.getText().toString();
+        String colorfav = mPhoneNumberField.getText().toString();
+        String animalfav = mSpecialtyField.getText().toString();
+        String edad = mBioField.getText().toString();
 
         if (TextUtils.isEmpty(name)) {
             mNameLabel.setError(getString(R.string.field_error));
             error = true;
         }
 
-        if (TextUtils.isEmpty(phoneNumber)) {
+        if (TextUtils.isEmpty(colorfav)) {
             mPhoneNumberLabel.setError(getString(R.string.field_error));
             error = true;
         }
 
-        if (TextUtils.isEmpty(specialty)) {
+        if (TextUtils.isEmpty(animalfav)) {
             mSpecialtyLabel.setError(getString(R.string.field_error));
             error = true;
         }
 
 
-        if (TextUtils.isEmpty(bio)) {
+        if (TextUtils.isEmpty(edad)) {
             mBioLabel.setError(getString(R.string.field_error));
             error = true;
         }
@@ -130,13 +130,13 @@ public class AddEditFormularioFragment extends Fragment {
             return;
         }
 
-        Formulario1 formulario = new Formulario1(name, colorfav, phoneNumber, bio, "");
+        Formulario1 formulario = new Formulario1(name, colorfav, animalfav, edad, "");
 
-        new AddEditLawyerTask().execute(formulario);
+        new AddEditFormularioTask().execute(formulario);
 
     }
 
-    private void showLawyersScreen(Boolean requery) {
+    private void showFormularioScreen(Boolean requery) {
         if (!requery) {
             showAddEditError();
             getActivity().setResult(Activity.RESULT_CANCELED);
@@ -152,7 +152,7 @@ public class AddEditFormularioFragment extends Fragment {
                 "Error al agregar nueva información", Toast.LENGTH_SHORT).show();
     }
 
-    private void showLawyer(Formulario1 formulario) {
+    private void showFormulario(Formulario1 formulario) {
         mNameField.setText(formulario.getName());
         mPhoneNumberField.setText(formulario.getColorfav());
         mSpecialtyField.setText(formulario.getAnimalfav());
@@ -164,17 +164,17 @@ public class AddEditFormularioFragment extends Fragment {
                 "Error al editar abogado", Toast.LENGTH_SHORT).show();
     }
 
-    private class GetLawyerByIdTask extends AsyncTask<Void, Void, Cursor> {
+    private class GetFormularioByIdTask extends AsyncTask<Void, Void, Cursor> {
 
         @Override
         protected Cursor doInBackground(Void... voids) {
-            return mFormularioDbHelper.getLawyerById(mFormularioId);
+            return mFormularioDbHelper.getFormularioById(mFormularioId);
         }
 
         @Override
         protected void onPostExecute(Cursor cursor) {
             if (cursor != null && cursor.moveToLast()) {
-                showLawyer(new Formulario1(cursor));
+                showFormulario(new Formulario1(cursor));
             } else {
                 showLoadError();
                 getActivity().setResult(Activity.RESULT_CANCELED);

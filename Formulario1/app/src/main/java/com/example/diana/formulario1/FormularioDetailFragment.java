@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.diana.formulario1.*;
+import com.example.diana.formulario1.R;
 import com.example.diana.formulario1.AddEditFormularioActivity;
 import com.example.diana.formulario1.Formulario1;
 import com.example.diana.formulario1.FormularioDbHelper;
@@ -83,7 +83,7 @@ public class FormularioDetailFragment extends Fragment {
     }
 
     private void loadLawyer() {
-        new GetLawyerByIdTask().execute();
+        new GetFormularioByIdTask().execute();
     }
 
     @Override
@@ -126,7 +126,7 @@ public class FormularioDetailFragment extends Fragment {
         startActivityForResult(intent, Formulario1Fragment.REQUEST_UPDATE_DELETE_FORMULARIO);
     }
 
-    private void showLawyersScreen(boolean requery) {
+    private void showFormularioScreen(boolean requery) {
         if (!requery) {
             showDeleteError();
         }
@@ -144,7 +144,7 @@ public class FormularioDetailFragment extends Fragment {
                 "Error al eliminar abogado", Toast.LENGTH_SHORT).show();
     }
 
-    private class GetLawyerByIdTask extends AsyncTask<Void, Void, Cursor> {
+    private class GetFormularioByIdTask extends AsyncTask<Void, Void, Cursor> {
 
         @Override
         protected Cursor doInBackground(Void... voids) {

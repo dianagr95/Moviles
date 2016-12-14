@@ -24,10 +24,10 @@ public class AddEditFormularioActivity extends AppCompatActivity {
 
         setTitle(lawyerId == null ? "Añadir formulario" : "Editar formulario");
 
-        AddEditFormularioFragment addEditLawyerFragment = (AddEditFormularioFragment)
+        AddEditFormularioFragment addEditFormularioFragment = (AddEditFormularioFragment)
                 getSupportFragmentManager().findFragmentById(R.id.add_edit_lawyer_container);
         if (addEditFormularioFragment == null) {
-            addEditLawyerFragment = AddEditFormularioFragment.newInstance(lawyerId);
+            addEditFormularioFragment = AddEditFormularioFragment.newInstance(lawyerId);
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.add_edit_formulario_container, addEditFormularioFragment)

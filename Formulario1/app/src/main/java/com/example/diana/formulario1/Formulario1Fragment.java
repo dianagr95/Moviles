@@ -92,7 +92,7 @@ public class Formulario1Fragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (Activity.RESULT_OK == resultCode) {
             switch (requestCode) {
-                case AddEditLawyerActivity.REQUEST_ADD_FORMULARIO:
+                case AddEditFormularioActivity.REQUEST_ADD_FORMULARIO:
                     showSuccessfullSavedMessage();
                     loadLawyers();
                     break;
@@ -113,8 +113,8 @@ public class Formulario1Fragment extends Fragment {
     }
 
     private void showAddScreen() {
-        Intent intent = new Intent(getActivity(), AddEditLawyerActivity.class);
-        startActivityForResult(intent, AddEditLawyerActivity.REQUEST_ADD_LAWYER);
+        Intent intent = new Intent(getActivity(), AddEditFormularioActivity.class);
+        startActivityForResult(intent, AddEditFormularioActivity.REQUEST_ADD_FORMULARIO);
     }
 
     private void showDetailScreen(String formularioId) {
@@ -127,7 +127,7 @@ public class Formulario1Fragment extends Fragment {
 
         @Override
         protected Cursor doInBackground(Void... voids) {
-            return mFormulario1DbHelper.getAllLawyers();
+            return mFormulario1DbHelper.getAllFormulario();
         }
 
         @Override
