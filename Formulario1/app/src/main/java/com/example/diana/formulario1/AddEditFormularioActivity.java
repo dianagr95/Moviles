@@ -15,7 +15,7 @@ public class AddEditFormularioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_edit);
+        setContentView(R.layout.activity_add_edit_formulario);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -25,7 +25,7 @@ public class AddEditFormularioActivity extends AppCompatActivity {
         setTitle(lawyerId == null ? "Añadir formulario" : "Editar formulario");
 
         AddEditFormularioFragment addEditFormularioFragment = (AddEditFormularioFragment)
-                getSupportFragmentManager().findFragmentById(R.id.add_edit_lawyer_container);
+                getSupportFragmentManager().findFragmentById(R.id.add_edit_formulario_container);
         if (addEditFormularioFragment == null) {
             addEditFormularioFragment = AddEditFormularioFragment.newInstance(lawyerId);
             getSupportFragmentManager()

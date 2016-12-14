@@ -62,7 +62,7 @@ public class AddEditFormularioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_add_edit_lawyer, container, false);
+        View root = inflater.inflate(R.layout.fragment_add_edit_formulario, container, false);
 
         // Referencias UI
         mSaveButton = (FloatingActionButton) getActivity().findViewById(R.id.fab);
